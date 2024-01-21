@@ -37,6 +37,8 @@ export default class waterModel extends modelAbstract{
             const isModelTouch = util.isModelTouch(x,y);
             if(isModelTouch || util.isCanvasTouch(x,y)){
                 //我想在碰撞到模型的的时候让其向下移动的几率大一点，所以我们需要修改randomDirection方法
+                //或者你可以在render方法中让tank在走着走着的时候就向下移动，这个随你，我只不过感觉这样有点突兀所以
+                //把增大向下移动的概率放在了randomDirection中
                 this.randomDirection();
             }else{
                 this.x = x;
