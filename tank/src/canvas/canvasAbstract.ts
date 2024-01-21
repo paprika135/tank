@@ -3,7 +3,7 @@ import position from "../service/position";
 
 export default abstract class canvasAbstract {
     abstract num():number;//用于返回从配置项文件中获取元素的个数。
-    abstract model():ModelConstructor;//用于获取model类
+    abstract model():ModelConstructor | bulletModelConstructor;//用于获取model类 ---现在它还有可能返回bulletModelConstructor实例
     abstract render():void;//在main.ts入口文件中，就是调用这个方法真正开始在画布上渲染模型图片的。
     public models:IModel[] = [];//用于存储模型，在后期我们可以用它来保证元素
     constructor(public name:string,protected app:HTMLDivElement = document.querySelector('#app') as HTMLDivElement,
@@ -29,8 +29,18 @@ export default abstract class canvasAbstract {
     }
 
     public renderModels(){
+        this.ctx.clearRect(0,0,config.canvas.width,config.canvas.height);//在子弹击中画布上某些元素时需要重新渲染画布
         this.models.forEach(model=>{
             model.render();
         })
     }
+
+    //移除IModel数组中的模型实例
+    public removeModel(model:IModel):void{
+        this.models = this.models.filter((m)=>{
+            return m != model;
+        })
+    }
+
+
 }

@@ -5,6 +5,7 @@ import palyCanvas from "../canvas/play";
 import _ from "lodash";
 import { directionEnum } from "../enum/directionEnum";
 import util from "../util";
+import bullet from "../canvas/bullet";
 
 export default class palyModel extends modelAbstract{
     canvas: ICanvas = palyCanvas;
@@ -16,6 +17,9 @@ export default class palyModel extends modelAbstract{
             this.bindEvent = true;
             document.addEventListener('keydown',this.changeDirection.bind(this))//随着移动方向的改变，改变炮头方向。
             document.addEventListener('keydown',this.move.bind(this))//实现玩家tank移动
+            document.addEventListener('keydown',(event:KeyboardEvent)=>{
+                if(event.code === 'Space') bullet.addPlayBullet();
+            })
         }
     }
     images(): HTMLImageElement {

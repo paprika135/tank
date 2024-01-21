@@ -6,6 +6,10 @@ interface ModelConstructor{
     new (x:number,y:number):IModel
 }
 
+interface bulletModelConstructor{
+    new (tank:IModel):IModel
+}
+
 
 interface IModel{
     x:number
@@ -13,10 +17,15 @@ interface IModel{
     width:number
     height:number
     render():void
+    tank?:Imodel
+    direction:string
+    name:string
+    destroyModel():void
 }
 
 interface ICanvas{
-    model():ModelConstructor
+    removeModel(model:IModel):void
+    model():bulletModelConstructor | ModelConstructor
     num():number
     ctx:CanvasRenderingContext2D
     renderModels:viod

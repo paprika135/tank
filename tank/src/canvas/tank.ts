@@ -33,4 +33,9 @@ export default new(class waterCanvas extends canvasAbstract implements ICanvas{
         super.renderModels();
     }
 
+    public stop(){
+        //清理定时器函数
+        clearInterval(this.intervalId)
+    }
+
 })("tank")

@@ -6,6 +6,11 @@ body{
     justify-content: center;
     align-items: center;
     #app{
+        background-color: #000;
+        background-image: url('../src//static/images/cover/cover.png');
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
         position: relative;
         border: solid 10px #333;
         box-sizing: content-box;

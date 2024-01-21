@@ -50,6 +50,6 @@ export default{
         num:30
     },
     tank:{
-        num:5
+        num:1
     },
 }
